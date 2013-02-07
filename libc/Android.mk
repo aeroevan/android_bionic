@@ -648,6 +648,9 @@ ifeq ($(TARGET_ARCH),arm)
   ifeq ($(TARGET_CORTEX_CACHE_LINE_32),true)
     libc_common_cflags += -DCORTEX_CACHE_LINE_32
   endif
+  ifeq ($(ARCH_ARM_HAVE_ARMV7A),true)
+    libc_common_cflags += -DNEON_UNALIGNED_ACCESS
+  endif
 else # !arm
   ifeq ($(TARGET_ARCH),x86)
     libc_crt_target_cflags :=
